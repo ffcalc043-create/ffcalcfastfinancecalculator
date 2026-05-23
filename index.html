@@ -51,11 +51,13 @@ body {
 .app {
   width: 100%;
   max-width: 430px;
+  height: 100vh;
   height: 100dvh;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  position: relative;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
   overflow: hidden;
 }
 
@@ -996,10 +998,24 @@ tr:hover td { background: rgba(255,255,255,.02); }
     // Fix WebView scroll
     document.addEventListener('DOMContentLoaded', function() {
       var scrollArea = document.getElementById('scrollArea');
-      if (scrollArea) {
-        scrollArea.style.overflowY = 'scroll';
-        scrollArea.style.webkitOverflowScrolling = 'touch';
-      }
+      if (!scrollArea) return;
+
+      scrollArea.style.overflowY = 'scroll';
+      scrollArea.style.webkitOverflowScrolling = 'touch';
+
+      // Manual touch scroll for Android WebView
+      var startY = 0;
+      var startScrollTop = 0;
+
+      scrollArea.addEventListener('touchstart', function(e) {
+        startY = e.touches[0].clientY;
+        startScrollTop = scrollArea.scrollTop;
+      }, { passive: true });
+
+      scrollArea.addEventListener('touchmove', function(e) {
+        var deltaY = startY - e.touches[0].clientY;
+        scrollArea.scrollTop = startScrollTop + deltaY;
+      }, { passive: true });
     });
   </script>
 </head>
