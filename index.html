@@ -38,7 +38,7 @@
   --radius-sm: 10px;
 }
 * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-html, body { height:100%; overflow:hidden; }
+html, body { height:100%; overflow:hidden; touch-action: manipulation; }
 body {
   background: var(--bg);
   color: var(--text);
@@ -160,11 +160,14 @@ body {
 /* ─── SCROLL AREA ─── */
 .scroll-area {
   flex: 1;
-  overflow-y: auto;
+  overflow-y: scroll;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  overscroll-behavior-y: contain;
   scrollbar-width: none;
   padding-bottom: 8px;
+  will-change: scroll-position;
 }
 .scroll-area::-webkit-scrollbar { display: none; }
 
@@ -988,6 +991,17 @@ tr:hover td { background: rgba(255,255,255,.02); }
 }
 
 </style>
+  <meta name="format-detection" content="telephone=no">
+  <script>
+    // Fix WebView scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      var scrollArea = document.getElementById('scrollArea');
+      if (scrollArea) {
+        scrollArea.style.overflowY = 'scroll';
+        scrollArea.style.webkitOverflowScrolling = 'touch';
+      }
+    });
+  </script>
 </head>
 <body>
 <div class="app">
