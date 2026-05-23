@@ -1,8 +1,0 @@
-[{
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target": {
-        "namespace": "android_app",
-        "package_name": "io.github.ffcalc043_create.twa",
-        "sha256_cert_fingerprints": ["F3:A8:BA:3A:77:97:23:0E:2F:A9:D4:92:82:D7:7F:4B:24:78:2F:1F:DE:BE:C8:2A:10:D4:FA:8B:E5:97:D2:77"]
-      }
-    }]
