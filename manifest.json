@@ -6,7 +6,7 @@
   "scope": "/ffcalcfastfinancecalculator/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#0a0e1a",
+  "background_color": "#0b0f1a",
   "theme_color": "#00e5c7",
   "lang": "pt-BR",
   "categories": ["finance", "utilities"],
@@ -25,5 +25,11 @@
     }
   ],
   "screenshots": [],
-  "prefer_related_applications": false
+  "related_applications": [
+    {
+      "platform": "play",
+      "id": "io.github.ffcalc043_create.twa"
+    }
+  ],
+  "prefer_related_applications": true
 }
